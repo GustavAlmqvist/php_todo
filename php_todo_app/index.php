@@ -6,7 +6,7 @@ $sysslor = json_decode($json, true);
 }
 ?>
 
-//html skeleton
+
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@ $sysslor = json_decode($json, true);
 <link rel="stylesheet" href="">
 <body>
 
-//Skapa nya sysslor
+<!--Skapa nya sysslor -->
 <form action="nysyssla.php" method="post">
   <input type="text" name="att_göra" placeholder="Skriv in sysslor">
   <button>Ny syssla</button>
@@ -25,15 +25,14 @@ $sysslor = json_decode($json, true);
 
 <?php
 foreach ($sysslor as $att_göra => $attgöra): ?>
-
-//Checka av form
+<!--Checka av form-->
     <div style="margin-bottom: 10px;">
       <form style="display: inline-block" action="checkaav.php" method="post">
       <input type="hidden" name="todo" value="<?php echo $att_göra ?>">
       <input type="checkbox" <?php echo $attgöra["avklarad"] ? "checked" : ""?> >
       <?php echo $att_göra ?>
       </form>
-//Ta bort form
+<!--Ta bort form -->
       <form style="display: inline-block" action="tabort.php" method="post">
         <input type="hidden" name="todo" value="<?php echo $att_göra ?>">
 
@@ -44,14 +43,15 @@ foreach ($sysslor as $att_göra => $attgöra): ?>
 
 <?php endforeach; ?>
 
-//avchecknings script
+<!--avchecknings script -->
+
 <script>
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
   checkboxes.forEach(ch => {
     ch.onclick = function () {
       this.parentNode.submit();
     };
-  })
+  });
 </script>
 
 </body>
